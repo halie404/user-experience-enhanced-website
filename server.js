@@ -19,6 +19,10 @@ const webinarsEndpoint = `${directusApiBaseUrl}/avl_webinars`;
 const categoriesEndpoint = `${directusApiBaseUrl}/avl_categories`;
 const bookmarksEndpoint = `${directusApiBaseUrl}/avl_messages`;
 
+app.get("/", (req, res) => {
+  res.render("index.liquid");
+});
+
 app.set("port", process.env.PORT || 8000);
 app.listen(app.get("port"), () => {
   console.log(`App is running on http://localhost:${app.get("port")}`);
