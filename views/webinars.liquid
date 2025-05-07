@@ -1,0 +1,30 @@
+{% render "partials/head.liquid" %}
+{% comment %} {% render "partials/header.liquid" %} {% endcomment %}
+
+<div class="webinars-wrapper">
+  {% for webinar in webinars %}
+  <article class="webinar-card" data-id="{{ webinar.id }}">
+    <figure>
+      <img
+        src="https://fdnd-agency.directus.app/assets/{{ webinar.thumbnail }}"
+        alt="An image that shows the webinar thumbnail."
+        class="webinar-thumbnail"
+        width="{{ webinar.thumbnail.width | default: 300 }}"
+        height="{{ webinar.thumbnail.height | default: 200 }}"
+      />
+      <figcaption>
+        {% comment %} <span class="webinar-duration">{{ webinar.duration }}</span>  {% endcomment %}
+      </figcaption>
+    </figure>
+    <header class="webinar-header">
+      <h2>{{ webinar.title }}</h2>
+    </header>
+    <div class="speakers-wrapper">
+      {% for speaker in webinar.speakers %}
+      <p class="speaker-name">{{ speaker.avl_speakers_id.fullname }}</p>
+      {% endfor %}
+    </div>
+  </article>
+  {% endfor %}
+</div>
+
